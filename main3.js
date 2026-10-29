@@ -1,4 +1,3 @@
-
 const analyzeButton = document.getElementById("analyzeButton");
 const copyFingerprintButton = document.getElementById("copyFingerprintButton");
 const copyButton = document.getElementById("copyButton");
