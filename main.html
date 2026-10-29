@@ -1,0 +1,214 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Browser Fingerprinting Analyzer</title>
+  <link rel="stylesheet" href="main2.css">
+</head>
+
+<body>
+  <main class="dashboard">
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">B</div>
+        <div>
+          <h1>Browser Fingerprinting Analyzer</h1>
+          <p>Privacy &amp; Browser Intelligence</p>
+        </div>
+      </div>
+
+      <span class="status">
+        <span class="status-dot"></span>
+        LOCAL ANALYSIS
+      </span>
+    </header>
+
+    <section class="welcome">
+      <p class="eyebrow">BROWSER PRIVACY TOOL</p>
+
+      <h2>
+        Understand your browser's
+        <span>digital identity.</span>
+      </h2>
+
+      <p>
+        Explore the browser signals that websites may combine
+        to distinguish your browser from others.
+      </p>
+    </section>
+
+    <section class="control-panel">
+      <div>
+        <h3>Browser analysis</h3>
+        <p>Collect available signals from your current browser.</p>
+      </div>
+
+      <div class="actions">
+        <button id="analyzeButton">Analyze browser ↗</button>
+        <button id="copyFingerprintButton" class="secondary-button">
+          Copy ID
+        </button>
+        <button id="copyButton" class="secondary-button">
+          Copy report
+        </button>
+        <button id="resetButton" class="secondary-button">
+          Reset
+        </button>
+      </div>
+
+      <p id="copyStatus" class="copy-status" aria-live="polite"></p>
+    </section>
+
+    <section id="summary" class="summary hidden">
+      <div class="score">
+        <span id="score">0</span>
+      </div>
+
+      <div class="summary-info">
+        <p class="eyebrow">ANALYSIS COMPLETE</p>
+        <h2 id="scoreTitle">Signals detected</h2>
+        <p id="scoreText"></p>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / SIGNALS</p>
+          <h2>Browser attributes</h2>
+        </div>
+
+        <span class="section-tag">Environment details</span>
+      </div>
+
+      <div id="result" class="results">
+        <div class="empty-state">
+          <span class="empty-icon">⌘</span>
+          <h3>Ready to analyze</h3>
+          <p>Click “Analyze browser” to inspect your browser signals.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="fingerprintPreview" class="panel hidden">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">02 / IDENTIFIER</p>
+          <h2>Fingerprint preview</h2>
+        </div>
+
+        <span class="section-tag">SHA-256</span>
+      </div>
+
+      <p class="muted">
+        A hash generated from the collected signals and Canvas pixel
+        signature. It is a demonstration, not proof of a unique identity.
+      </p>
+
+      <code id="fingerprintToken">Your fingerprint will appear here.</code>
+
+      <h3>Signals included in the fingerprint</h3>
+      <ul id="fingerprintIngredients"></ul>
+
+      <p class="privacy-note">
+        This tool processes collected details in your browser and does
+        not upload them to a server.
+      </p>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">03 / TEST LAB</p>
+          <h2>Rendering diagnostics</h2>
+        </div>
+
+        <span class="section-tag">Browser APIs</span>
+      </div>
+
+      <div class="test-grid">
+
+        <section id="canvasSection" class="panel test-section hidden">
+          <div class="test-icon">C</div>
+          <h3>Canvas fingerprinting</h3>
+
+          <p class="muted">
+            Canvas draws text and shapes. Differences in how browsers
+            render them can contribute to browser fingerprinting.
+          </p>
+
+          <canvas
+            id="fingerprintCanvas"
+            width="500"
+            height="180"
+            aria-label="Canvas fingerprinting drawing demonstration">
+          </canvas>
+
+          <p class="result-label">CANVAS SIGNATURE HASH</p>
+          <code id="canvasHash">Not generated yet.</code>
+
+          <p class="small-note">
+            The hash is calculated from the drawing's pixel data.
+          </p>
+        </section>
+
+        <section id="webglSection" class="panel test-section hidden">
+          <div class="test-icon">G</div>
+          <h3>WebGL graphics detection</h3>
+
+          <p class="muted">
+            WebGL renders graphics using the browser's graphics system.
+            The tool checks support and attempts to read renderer details.
+          </p>
+
+          <canvas
+            id="webglCanvas"
+            width="500"
+            height="180"
+            aria-label="WebGL graphics rendering demonstration">
+          </canvas>
+
+          <p class="result-label">WEBGL STATUS</p>
+          <p id="webglStatus" class="diagnostic-value">
+            Not tested yet.
+          </p>
+
+          <p class="result-label">GRAPHICS RENDERER</p>
+          <p id="webglRenderer" class="diagnostic-value">
+            Not detected yet.
+          </p>
+        </section>
+
+      </div>
+    </section>
+
+    <section id="recommendations" class="panel hidden">
+      <p class="eyebrow">04 / PROTECTION</p>
+      <h2>Privacy recommendations</h2>
+
+      <ul id="recommendationList"></ul>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-mark">BFA</div>
+
+      <div>
+        <h3>About this project</h3>
+        <p>
+          This educational tool demonstrates browser fingerprinting
+          using locally accessible browser information. The results
+          do not prove that a browser is uniquely identifiable.
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="main3.js"></script>
+</body>
+</html>
